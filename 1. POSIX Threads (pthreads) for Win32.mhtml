@@ -1,0 +1,607 @@
+From: <Saved by Blink>
+Subject: POSIX Threads (pthreads) for Win32
+Date: Tue, 9 Jan 2017 06:16:41 -0000
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----MultipartBoundary--J33pEZx8IXCclN9RAXUojWAOra9LP1o0W5oxIYbqgB----"
+
+------MultipartBoundary--J33pEZx8IXCclN9RAXUojWAOra9LP1o0W5oxIYbqgB----
+Content-Type: text/html
+Content-ID: <frame-718-c4b62bd3-8b2e-4513-a439-05b10688630f@mhtml.blink>
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://sourceware.org/pthreads-win32/
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head><=
+meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8">
+=09
+	<title>POSIX Threads (pthreads) for Win32</title>
+	<meta name=3D"GENERATOR" content=3D"OpenOffice.org 3.4  (Win32)">
+	<meta name=3D"CREATED" content=3D"20030918;17035900">
+	<meta name=3D"CHANGED" content=3D"20120912;10452539">
+	<meta name=3D"DESCRIPTION" content=3D"POSIX Threads for Win32">
+	<meta name=3D"KEYWORDS" content=3D"POSIX Threads Pthreads Win32">
+	<meta name=3D"CHANGEDBY" content=3D"Ross Johnson">
+	<style type=3D"text/css">
+	<!--
+		H2.western { font-family: "Albany", sans-serif; font-size: 14pt; font-sty=
+le: italic }
+		H2.cjk { font-family: "HG Mincho Light J"; font-size: 14pt; font-style: i=
+talic }
+		H2.ctl { font-family: "Arial Unicode MS"; font-size: 14pt; font-style: it=
+alic }
+		H4.western { font-family: "Albany", sans-serif; font-size: 11pt; font-sty=
+le: italic }
+		H4.cjk { font-family: "HG Mincho Light J"; font-size: 11pt; font-style: i=
+talic }
+		H4.ctl { font-family: "Arial Unicode MS"; font-size: 11pt; font-style: it=
+alic }
+		H3.western { font-family: "Albany", sans-serif }
+		H3.cjk { font-family: "HG Mincho Light J" }
+		H3.ctl { font-family: "Arial Unicode MS" }
+	-->
+	</style>
+</head>
+<body lang=3D"en-AU" bgcolor=3D"#ffffff" dir=3D"LTR">
+<table width=3D"100%" cellpadding=3D"2" cellspacing=3D"2" style=3D"page-bre=
+ak-before: always">
+	<tbody><tr>
+		<td>
+			<p><img src=3D"https://sourceware.org/pthreads-win32/images/Pthreads-win=
+32-small.gif" name=3D"Graphic1" align=3D"LEFT" width=3D"303" height=3D"91" =
+border=3D"0"><br>
+			</p>
+		</td>
+		<td>
+			<h2 lang=3D"en-GB" class=3D"western" align=3D"RIGHT"><font face=3D"verda=
+na, arial, helvetica">Open
+			Source<br>POSIX Threads for Win32</font></h2>
+		</td>
+	</tr>
+</tbody></table>
+<h4 class=3D"western"><font face=3D"verdana, arial, helvetica"><span lang=
+=3D"en-GB"><span style=3D"font-style: normal">Current
+release:</span></span></font> <font face=3D"verdana, arial, helvetica"><spa=
+n lang=3D"en-GB"><span style=3D"font-style: normal"><b>2.9.1
+</b></span></span></font><font face=3D"verdana, arial, helvetica"><span lan=
+g=3D"en-GB"><span style=3D"font-style: normal"><span style=3D"font-weight: =
+normal">(2012-05-27)</span></span></span></font><font face=3D"verdana, aria=
+l, helvetica"><span lang=3D"en-GB"><span style=3D"font-style: normal"><br><=
+/span></span></font><span style=3D"text-decoration: none"><font face=3D"ver=
+dana, arial, helvetica"><span lang=3D"en-GB"><span style=3D"font-style: nor=
+mal"><span style=3D"font-weight: normal">See
+the <a href=3D"https://sourceware.org/pthreads-win32/announcement.html">ANN=
+OUNCEMENT</a> and </span></span></span></font></span><font color=3D"#000000=
+"><span style=3D"text-decoration: none"><font face=3D"verdana, arial, helve=
+tica"><span lang=3D"en-GB"><span style=3D"font-style: normal"><span style=
+=3D"font-weight: normal"><a href=3D"https://sourceware.org/pthreads-win32/n=
+ews.html">NEWS</a>
+for details.</span></span></span></font></span></font><a href=3D"https://so=
+urceware.org/pthreads-win32/news.html"><span style=3D"text-decoration: none=
+"><font face=3D"verdana, arial, helvetica"><span lang=3D"en-GB"><span style=
+=3D"font-style: normal"><br></span></span></font></span><span style=3D"text=
+-decoration: none"><font face=3D"verdana, arial, helvetica"><span lang=3D"e=
+n-GB"><i><br></i></span></font></span></a><span style=3D"text-decoration: n=
+one"><font face=3D"verdana, arial, helvetica"><span lang=3D"en-GB"><span st=
+yle=3D"font-weight: normal">Pthreads-w32
+release 1.11.0 (2005-06-04) was <a href=3D"https://sourceware.org/pthreads-=
+win32/#download">the last series
+1.x.x version</a>!</span></span></font></span><span style=3D"text-decoratio=
+n: none">
+</span><span style=3D"text-decoration: none"><font face=3D"verdana, arial, =
+helvetica"><span lang=3D"en-GB"><br></span></font></span><span style=3D"tex=
+t-decoration: none"><font face=3D"verdana, arial, helvetica"><font size=3D"=
+1" style=3D"font-size: 8pt"><span lang=3D"en-GB"><span style=3D"font-weight=
+: normal">(Version
+1.11.0 is a back-port of the 2.7.0 functionality and bug fixes. See
+the NEWS file inside the package for more information.)</span></span></font=
+></font></span></h4>
+<h2 lang=3D"en-GB" class=3D"western"><font face=3D"verdana, arial, helvetic=
+a">What
+is this project about?</font></h2>
+<p><font face=3D"verdana, arial, helvetica"><span lang=3D"en-GB">The
+<a href=3D"http://www.unix-systems.org/version3/ieee_std.html">POSIX
+1003.1-2001</a> standard defines an application programming interface
+(API) for writing multithreaded applications. This interface is known
+more commonly as </span></font><em><font face=3D"verdana, arial, helvetica"=
+><span lang=3D"en-GB">pthreads</span></font></em><font face=3D"verdana, ari=
+al, helvetica"><span lang=3D"en-GB">.
+A good number of modern operating systems include a threading library
+of some kind: Solaris (UI) threads, Win32 threads, DCE threads,
+DECthreads, or any of the draft revisions of the pthreads standard.
+The trend is that most of these systems are slowly adopting the
+pthreads standard API, with application developers following suit to
+reduce porting woes. </span></font>
+</p>
+<p lang=3D"en-GB"><font face=3D"verdana, arial, helvetica">Win32 does
+not, and is unlikely to ever, support pthreads natively. This project
+seeks to provide a freely available and high-quality solution to this
+problem. </font>
+</p>
+<p lang=3D"en-GB"><font face=3D"verdana, arial, helvetica">Various
+individuals have been working on independent implementations of this
+well-documented and standardised threading API, but most of them
+never see the light of day. The tendency is for people to only
+implement what they personally need, and that usually does not help
+others. This project attempts to consolidate these implementations
+into one implementation of pthreads for Win32. </font>
+</p>
+<h2 lang=3D"en-GB" class=3D"western" style=3D"page-break-after: avoid"><fon=
+t face=3D"verdana, arial, helvetica"><font size=3D"5"><b>License</b></font>=
+</font></h2>
+<p><font face=3D"verdana, arial, helvetica"><span lang=3D"en-GB">This
+implementation is <a href=3D"http://www.gnu.org/">free software</a>,
+distributed under the <a href=3D"https://sourceware.org/pthreads-win32/copy=
+ing.html">GNU Lesser General
+Public License</a> (LGPL).</span></font></p>
+<h2 lang=3D"en-GB" class=3D"western"><font face=3D"verdana, arial, helvetic=
+a">Level
+of standards conformance</font></h2>
+<p><font face=3D"verdana, arial, helvetica"><span lang=3D"en-GB">Pthreads-w=
+in32
+currently implements a large subset of the POSIX standard threads
+related API. See our <a href=3D"https://sourceware.org/pthreads-win32/confo=
+rmance.html">conformance</a> page
+for a complete list of options and functions implemented as well as
+those that aren't. </span></font>
+</p>
+<p><font face=3D"verdana, arial, helvetica"><span lang=3D"en-GB">HTML
+formatted <a href=3D"https://sourceware.org/pthreads-win32/manual/index.htm=
+l">manual pages</a> are now
+available inside the package and on this site. Peruse them for
+additional Pthreads-win32 information.</span></font></p>
+<h2 lang=3D"en-GB" class=3D"western"><font face=3D"verdana, arial, helvetic=
+a">Project
+maintainer</font></h2>
+<p lang=3D"en-GB"><font face=3D"verdana, arial, helvetica">The project is
+being maintained by Ross Johnson, who has been involved from the
+start in 1998. The role primarily involves integrating contributed
+code and problem fixes, writing some original sections and test
+cases, and of course, testing, packaging and distributing the
+product. </font>
+</p>
+<h2 lang=3D"en-GB" class=3D"western"><font face=3D"verdana, arial, helvetic=
+a">Acknowledgements</font></h2>
+<p lang=3D"en-GB"><font face=3D"verdana, arial, helvetica">We would like
+to thank Ben Elliston for initiating the project, and John Bossom for
+providing us with his win32 pthreads implementation, which provided
+the near complete basis for this project.</font></p>
+<p><font face=3D"verdana, arial, helvetica"><span lang=3D"en-GB">Thanks
+to Xavier Leroy for granting permission to use and modify his
+LinuxThreads manual pages, and to the <a href=3D"http://www.opengroup.org/"=
+>Open
+Group</a> for their manual pages.</span></font></p>
+<p><font face=3D"verdana, arial, helvetica"><span lang=3D"en-GB">Thanks
+also to all past and present <a href=3D"https://sourceware.org/pthreads-win=
+32/contributors.html">contributors</a>
+to the project.</span></font></p>
+<p><font face=3D"verdana, arial, helvetica"><span lang=3D"en-GB">Please
+also see the </span></font><font face=3D"verdana, arial, helvetica"><span l=
+ang=3D"en-GB"><i>Acknowledgements</i></span></font>
+<font face=3D"verdana, arial, helvetica"><span lang=3D"en-GB">section of
+the latest <a href=3D"https://sourceware.org/pthreads-win32/announcement.ht=
+ml">ANNOUNCEMENT</a> page.</span></font></p>
+<h2 lang=3D"en-GB" class=3D"western"><font face=3D"verdana, arial, helvetic=
+a">How
+does it work?</font></h2>
+<p lang=3D"en-GB"><font face=3D"verdana, arial, helvetica">The Win32
+pthreads is normally implemented as a dynamic link library (DLL).
+This has some notable advantages from the Win32 point of view, but it
+also more closely models existing pthread libraries on UNIX which are
+usually shared objects (e.g. libpthread.so). Please note though, that
+the library can also be built for static linking if necessary.</font></p>
+<h2 lang=3D"en-GB" class=3D"western"><font face=3D"verdana, arial, helvetic=
+a">Success
+stories</font></h2>
+<p lang=3D"en-GB"><font face=3D"verdana, arial, helvetica">The library is
+being used in many projects either migrating from Unix platforms or
+developing cross-platform applications. These include commercial,
+research and other applications, many of which can be found via a
+Google search (e.g. try the keywords 'pthreads-win32' and
+'requirements').</font></p>
+<h2 lang=3D"en-GB" class=3D"western"><a name=3D"download"></a><font face=3D=
+"verdana, arial, helvetica">Where
+can I get it?</font></h2>
+<h3 lang=3D"en-GB" class=3D"western"><font face=3D"verdana, arial, helvetic=
+a">Download</font></h3>
+<p><font face=3D"verdana, arial, helvetica"><span lang=3D"en-GB">[You can
+also get it from one of several <a href=3D"http://sourceware.org/mirrors.ht=
+ml">mirror</a>
+sites.] </span></font>
+</p>
+<p><font face=3D"verdana, arial, helvetica"><span lang=3D"en-GB">The
+source tree and precompiled .DLL, .LIB and necessary header files are
+included in the zip file named "pthread-w32-v-v-v-release.zip"
+at:<br><a href=3D"ftp://sourceware.org/pub/pthreads-win32">ftp://sourceware=
+.org/pub/pthreads-win32</a>
+<br>(v-v-v is the version number, e.g. 1-4-0, and =E2=80=9Crelease=E2=80=9D
+is a descriptive term that may vary, e.g. beta1, rc1. Etc). Versions
+older than 2.9.1 are in self-extracting .exe files.</span></font></p>
+<p><font face=3D"verdana, arial, helvetica"><span lang=3D"en-GB">Just the
+DLLs, LIBs, header files, and admin documentation is available
+at:<br><a href=3D"ftp://sourceware.org/pub/pthreads-win32/dll-latest">ftp:/=
+/sourceware.org/pub/pthreads-win32/dll-latest</a></span></font></p>
+<p><font face=3D"verdana, arial, helvetica"><span lang=3D"en-GB">The
+source tree is available as a gzipped tar file
+from:<br><a href=3D"ftp://sourceware.org/pub/pthreads-win32">ftp://sourcewa=
+re.org/pub/pthreads-win32</a>
+</span></font>
+</p>
+<p><font face=3D"verdana, arial, helvetica"><span lang=3D"en-GB">The
+source files are also available in unpacked form
+at:<br><a href=3D"ftp://sourceware.org/pub/pthreads-win32/sources">ftp://so=
+urceware.org/pub/pthreads-win32/sources</a>
+</span></font>
+</p>
+<h3 lang=3D"en-GB" class=3D"western"><font face=3D"verdana, arial, helvetic=
+a">Direct
+access to the CVS code repository</font></h3>
+<p><font face=3D"verdana, arial, helvetica"><span lang=3D"en-GB">You can
+get anonymous read-only access to the source code using CVS
+(Concurrent Versioning System), from <a href=3D"http://sourceware.org/">sou=
+rceware.org</a>.
+If you would like to use CVS under Win32, you can get it from
+<a href=3D"http://www.wincvs.org/">www.wincvs.org</a> </span></font>
+</p>
+<p lang=3D"en-GB"><font face=3D"verdana, arial, helvetica">To check out
+the most recent development version of the source code, type (or
+whatever the equivalent is in wincvs): </font>
+</p>
+<p lang=3D"en-GB"><font face=3D"verdana, arial, helvetica">cvs -d
+:pserver:anonymous@sourceware.org:/cvs/pthreads-win32 checkout
+pthreads</font></p>
+<h3 lang=3D"en-GB" class=3D"western"><font face=3D"verdana, arial, helvetic=
+a">Via
+the CVS Web page</font></h3>
+<p><font face=3D"verdana, arial, helvetica"><span lang=3D"en-GB">There is
+also a <a href=3D"http://sourceware.org/cgi-bin/cvsweb.cgi/pthreads/?cvsroo=
+t=3Dpthreads-win32">web
+interface</a> to CVS, which might suit you better if you're more
+interested in just reading the code. </span></font>
+</p>
+<h3 lang=3D"en-GB" class=3D"western"><font face=3D"verdana, arial, helvetic=
+a">Just
+want the DLL without the source code?</font></h3>
+<p><font face=3D"verdana, arial, helvetica"><span lang=3D"en-GB">The
+latest DLL, development library, include files (pthread.h,
+semaphore.h, sched.h) , and ChangeLog are available from
+<a href=3D"ftp://sourceware.org/pub/pthreads-win32/dll-latest">ftp://source=
+ware.org/pub/pthreads-win32/dll-latest</a>
+</span></font>
+</p>
+<h2 lang=3D"en-GB" class=3D"western"><font face=3D"verdana, arial, helvetic=
+a">Mailing
+lists</font></h2>
+<p><font face=3D"verdana, arial, helvetica"><span lang=3D"en-GB">A
+<a href=3D"http://sourceware.org/ml/pthreads-win32/">discussion list</a>
+exists for this project. </span></font>
+</p>
+<h3 lang=3D"en-GB" class=3D"western"><font face=3D"verdana, arial, helvetic=
+a">To
+Subscribe</font></h3>
+<p lang=3D"en-GB"><font face=3D"verdana, arial, helvetica">Send mail to </f=
+ont>
+</p>
+<p><font face=3D"verdana, arial, helvetica"><span lang=3D"en-GB"><a href=3D=
+"mailto:pthreads-win32-subscribe@sourceware.org">pthreads-win32-subscribe@s=
+ourceware.org</a>
+</span></font>
+</p>
+<p lang=3D"en-GB"><font face=3D"verdana, arial, helvetica">No subject or
+message is required, but will be ignored if present (some mailers may
+insist on one or both before sending the message). </font>
+</p>
+<h3 lang=3D"en-GB" class=3D"western"><font face=3D"verdana, arial, helvetic=
+a">Want
+to unsubscribe?</font></h3>
+<p lang=3D"en-GB"><font face=3D"verdana, arial, helvetica">Send mail to </f=
+ont>
+</p>
+<p><font face=3D"verdana, arial, helvetica"><span lang=3D"en-GB"><a href=3D=
+"mailto:pthreads-win32-unsubscribe@sourceware.org">pthreads-win32-unsubscri=
+be@sourceware.org</a>
+</span></font>
+</p>
+<p lang=3D"en-GB"><font face=3D"verdana, arial, helvetica">If you still
+get mail from the list after this then perhaps you've changed your
+address, in which case the list server won't recognise you. If you
+are still getting mail forwarded to you from your old address then
+you can unsubscribe your old address by sending mail to </font>
+</p>
+<p><font face=3D"verdana, arial, helvetica"><span lang=3D"en-GB"><a href=3D=
+"mailto:pthreads-win32-unsubscribe-oldname%3Doldhost.olddomain@sourceware.o=
+rg">pthreads-win32-unsubscribe-oldname=3Doldhost.olddomain@sourceware.org</=
+a>
+</span></font>
+</p>
+<p lang=3D"en-GB"><font face=3D"verdana, arial, helvetica">where
+oldname=3Doldhost.olddomain must be your previous address (with the '@'
+replaced by '=3D'). A message will be sent to your old address so that
+you can confirm your removal. Otherwise you'll have to notify Ross so
+that he can remove your previous address by hand. </font>
+</p>
+<h3 lang=3D"en-GB" class=3D"western"><font face=3D"verdana, arial, helvetic=
+a">Other
+possibilities</font></h3>
+<p><font face=3D"verdana, arial, helvetica"><span lang=3D"en-GB">There
+are also <a href=3D"https://sourceware.org/pthreads-win32/mailinglist.html"=
+>ways</a> to get archived mailing
+list messages, or messages in digest form etc. </span></font>
+</p>
+<h3 lang=3D"en-GB" class=3D"western"><font face=3D"verdana, arial, helvetic=
+a">Keeping
+up with code changes</font></h3>
+<p><font face=3D"verdana, arial, helvetica"><span lang=3D"en-GB">Another
+mailing list carries CVS notification messages which are generated
+when modifications are checked into CVS. You can subscribe by sending
+mail to <a href=3D"mailto:sourceware-cvs-pthreads-win32-request@sourceware.=
+org">sourceware-cvs-pthreads-win32-request@sourceware.org</a>.
+(What a mouthful!) </span></font>
+</p>
+<h2 lang=3D"en-GB" class=3D"western"><font face=3D"verdana, arial, helvetic=
+a">Project
+resources</font></h2>
+<h3 lang=3D"en-GB" class=3D"western"><font face=3D"verdana, arial, helvetic=
+a">Other
+pages</font></h3>
+<ul>
+	<li><p style=3D"margin-bottom: 0cm"><font face=3D"verdana, arial, helvetic=
+a"><span lang=3D"en-GB"><a href=3D"https://sourceware.org/pthreads-win32/co=
+nformance.html">Conformance</a>
+	</span></font>
+	</p>
+	</li><li><p style=3D"margin-bottom: 0cm"><font face=3D"verdana, arial, hel=
+vetica"><span lang=3D"en-GB"><a href=3D"https://sourceware.org/pthreads-win=
+32/manual/index.html">Manual
+	pages online</a> =E2=80=93 edited for Pthreads-win32</span></font></p>
+	</li><li><p style=3D"margin-bottom: 0cm"><font face=3D"verdana, arial, hel=
+vetica"><span lang=3D"en-GB"><a href=3D"https://sourceware.org/pthreads-win=
+32/faq.html">FAQ</a>
+	</span></font>
+	</p>
+	</li><li><p style=3D"margin-bottom: 0cm"><font face=3D"verdana, arial, hel=
+vetica"><span lang=3D"en-GB"><a href=3D"https://sourceware.org/pthreads-win=
+32/news.html">News
+	(release notes)</a> </span></font>
+	</p>
+	</li><li><p><font face=3D"verdana, arial, helvetica"><span lang=3D"en-GB">=
+<a href=3D"https://sourceware.org/pthreads-win32/bugs.html">Known
+	Bugs</a> </span></font>
+	</p>
+</li></ul>
+<h3 lang=3D"en-GB" class=3D"western"><font face=3D"verdana, arial, helvetic=
+a">Independent
+Critiques and benchmarking of the library</font></h3>
+<ul>
+	<li><p><font face=3D"verdana, arial, helvetica"><span lang=3D"en-GB"><a hr=
+ef=3D"http://world.std.com/~jmhart/opensource.htm">Experiments
+	with the Open Source Pthreads Library and Some Comments</a> </span></font>
+	</p>
+</li></ul>
+<h2 lang=3D"en-GB" class=3D"western"><font face=3D"verdana, arial, helvetic=
+a">PThreads
+resources</font></h2>
+<h3 lang=3D"en-GB" class=3D"western"><font face=3D"verdana, arial, helvetic=
+a">Documentation/FAQs/Tutorials</font></h3>
+<ul>
+	<li><p style=3D"margin-bottom: 0cm"><a href=3D"http://www.unix-systems.org=
+/version3/ieee_std.html"><font face=3D"verdana, arial, helvetica"><span lan=
+g=3D"en-GB">The
+	Single Unix Specification version 3 (IEEE Std 1003.1-2001) free
+	online reference</span></font></a></p>
+	</li><li><p style=3D"margin-bottom: 0cm"><a href=3D"http://www.faqs.org/fa=
+qs/by-newsgroup/comp/comp.programming.threads.html"><font face=3D"verdana, =
+arial, helvetica"><span lang=3D"en-GB">comp.programming.threads
+	FAQ</span></font></a></p>
+	</li><li><p style=3D"margin-bottom: 0cm"><a href=3D"http://www.llnl.gov/co=
+mputing/tutorials/pthreads/"><font face=3D"verdana, arial, helvetica"><span=
+ lang=3D"en-GB">Pthreads
+	tutorial (from LLNL.GOV)</span></font></a></p>
+	</li><li><p style=3D"margin-bottom: 0cm"><a href=3D"http://www.llnl.gov/co=
+mputing/tutorials/pthreads/#Routines"><font face=3D"verdana, arial, helveti=
+ca"><span lang=3D"en-GB">Pthreads
+	API reference (AIX specific =E2=80=93 handy but not pthreads-win32
+	specific)</span></font></a></p>
+</li></ul>
+<h3 lang=3D"en-GB" class=3D"western"><font face=3D"verdana, arial, helvetic=
+a">Newsgroups</font></h3>
+<ul>
+	<li><p style=3D"margin-bottom: 0cm"><font face=3D"verdana, arial, helvetic=
+a"><span lang=3D"en-GB"><a href=3D"news:comp.programming.threads">comp.prog=
+ramming.threads</a>
+	</span></font>
+	</p>
+	</li><li><p><font face=3D"verdana, arial, helvetica"><span lang=3D"en-GB">=
+<a href=3D"news:comp.os.ms-windows.programmer.win32">comp.os.ms-windows.pro=
+grammer.win32</a>
+	</span></font>
+	</p>
+</li></ul>
+<hr>
+<address lang=3D"en-GB"><a name=3D"maintainedby"></a><font face=3D"verdana,=
+ arial, helvetica">Maintained
+by Ross Johnson</font></address>
+<address lang=3D"en-GB" style=3D"font-style: normal"><font face=3D"verdana,=
+ arial, helvetica"><font size=3D"2">You
+can contact me using: Firstname.Lastname at the domain
+homemail.com.au</font></font></address>
+
+
+</body></html>
+------MultipartBoundary--J33pEZx8IXCclN9RAXUojWAOra9LP1o0W5oxIYbqgB----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: https://sourceware.org/pthreads-win32/images/Pthreads-win32-small.gif
+
+R0lGODlhLwFbAMYAAJsF+9mJO9nHJcmpOP7lBflHHdOpoeVpMszJxtCMhO6oF/CIFL1m9955PfHZ
+De2onfPFsbNI8+64Fu+YFfPoofZYDvN4Ef39+/HZovZoMO24rPTJFfR5Zqcn9fKHb+6nXcu6M/gx
+Dt8YU+uMhcZ59L05qdKakcy5sPo7EtaYNaIZ+tfX17pZ9u2Yjslt1NYmdK03+fK4Xtik+cmH9N6u
+/OK4/PTYV+3K1fGYZ+vo6O7Y3M+X88+43vnoYPLHXfdYRv//////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////yH+
+Dk1hZGUgd2l0aCBHSU1QACH5BAEKAEAALAAAAAAvAVsAQAf+gBeCg4SFhoeIiYqLjI2Oj5CRkpOU
+lZaXmIYSKBYgnp+goAKjpCCjIAMDKRYHBQUPOYUUBLS1tQ42GBgUOhixhDkZFRKipA6kCgU/Jwgr
+v5nQ0dLTjhMoFanZ2aEJKC7MztSLORsZBQqeAg4OtrUKKBktHNcS6+ztBA7WJg0/BSgDPq3DR8uB
+hR8GAjTgocPchHQDCW74ga2BKwsTJEhQoGDCgQrXYB1ysKBChgUcOS4QhqJlyww5cmBY4MokihE6
+YsrqUWuDhAUWKvxD4cplgQocIEjKYYPAz6MWFGzYcErCAKCtQhTIoOGZohw4MrQ8msGC2QogC+B8
+wOmTOon+YlsgAPcMgoVrUaUK0LhRQQphBbRmwKHDkYa2piISJPDhFQIEI1AcgHjPlo4fB378SBBQ
+QMHFBW34+HDzxIEQKSCCpnDjR8sF6hQTtFBAQ7McHM5RXrzOLbt3GlYYcDXhlKlR9u71yKGBQ1TZ
+ttbRZhYTwtapxmQ7aM3BnAJ7oAksQGHCWazxnTpXbtfjwoMMGSTkW09QQgEOj4fDFpCYPgFr8J0D
+HkEOCEUXIT0YhEJqiYG2UUDFQEdLCwXosIJpCwrkX0GaPWbeXQy+tZgGP2TwWAoFHMBfbPgUmMEK
+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
+oMs2rZdKAsAasjNLszX7qQ7arxDbsVsaCAA7
+------MultipartBoundary--J33pEZx8IXCclN9RAXUojWAOra9LP1o0W5oxIYbqgB------
