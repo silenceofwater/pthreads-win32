@@ -1,0 +1,25 @@
+根据 https://computing.llnl.gov/tutorials/pthreads/ 中的例子修改而来
+
+1. hello.cpp
+	用来说明如何创建和退出线程
+	A "hello world" Pthreads program. 
+	Demonstrates thread creation and termination.
+
+2. helloexit.cpp  
+	用来说明pthread_exit()对程序的影响
+	在main中，有一个问题，就是当main结束时，其创建的线程还没有结束。
+	如果此时没有显式的调用pthread_exit()，当main结束时，进程（和所有线程）都会终止。
+	可以在main中调用pthread_exit()，这时main()函数会被阻塞，直到其创建的线程都执行结束。
+	By having main() explicitly call pthread_exit() as the last thing it does, 
+	main() will block and be kept alive to support the threads it created until they are done.
+
+3. hello_arg1.cpp\hello_arg2.cpp\hello_arg3.cpp
+	hello_arg1.cpp hello_arg2.cpp用来说明正确的参数传递
+	hello_arg1.cpp中传递整数
+	hello_arg2.cpp传递结构体参数，注意有两种方法：使用全局变量和动态创建，且动态创建时注意对象析构
+	hello_arg3.cpp错误的传递参数
+	
+4. join.cpp\detached.cpp
+	展示属性的设置
+	
+	
