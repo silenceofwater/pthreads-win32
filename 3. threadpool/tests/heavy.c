@@ -1,9 +1,10 @@
-#include <stdio.h>
+#include <cstdio>
+#include <cassert>
+#include <Windows.h>
 #include <pthread.h>
-#include <unistd.h>
-#include <assert.h>
-
 #include "threadpool.h"
+
+#pragma comment(lib, "pthreadVC2.lib")
 
 #define THREAD 4
 #define SIZE   8192
@@ -47,7 +48,7 @@ int main(int argc, char **argv)
         assert(pool[i] != NULL);
     }
 
-    usleep(10);
+    Sleep(10);
 
     for(i = 0; i < SIZE; i++) {
         tasks[i] = 0;
@@ -55,7 +56,7 @@ int main(int argc, char **argv)
     }
 
     while(copy > 0) {
-        usleep(10);
+        Sleep(10);
         pthread_mutex_lock(&lock);
         copy = left;
         pthread_mutex_unlock(&lock);
