@@ -30,7 +30,7 @@
 #define _THREADPOOL_H_
 
 #ifdef __cplusplus
-/* å¯¹äº C++ ç¼–è¯‘å™¨ï¼ŒæŒ‡å®šç”¨ C çš„è¯­æ³•ç¼–è¯‘ */
+/* ¶ÔÓÚ C++ ±àÒëÆ÷£¬Ö¸¶¨ÓÃ C µÄÓï·¨±àÒë */
 extern "C" {
 #endif
 
@@ -46,10 +46,10 @@ extern "C" {
 #define MAX_THREADS 64
 #define MAX_QUEUE 65536
 
-/* ç®€åŒ–å˜é‡å®šä¹‰,åœ¨Cä¸­ç»“æ„ä½“å®šä¹‰å˜é‡æ—¶éœ€åŠ å…³é”®å­—struct */
+/* ¼ò»¯±äÁ¿¶¨Òå,ÔÚCÖĞ½á¹¹Ìå¶¨Òå±äÁ¿Ê±Ğè¼Ó¹Ø¼ü×Östruct */
 typedef struct threadpool_t threadpool_t;
 
-/* å®šä¹‰é”™è¯¯ç  */
+/* ¶¨Òå´íÎóÂë */
 typedef enum {
     threadpool_invalid        = -1,
     threadpool_lock_failure   = -2,
@@ -63,7 +63,7 @@ typedef enum {
 } threadpool_destroy_flags_t;
 
 /**
- * ä»¥ä¸‹æ˜¯çº¿ç¨‹æ± ä¸‰ä¸ªå¯¹å¤– API 
+ * ÒÔÏÂÊÇÏß³Ì³ØÈı¸ö¶ÔÍâ API 
  *		||
  *		||
  *		||
@@ -80,7 +80,7 @@ typedef enum {
  * @return a newly created thread pool or NULL
  */
 /**
- * åˆ›å»ºçº¿ç¨‹æ± ï¼Œæœ‰ thread_count ä¸ªçº¿ç¨‹ï¼Œå®¹çº³ queue_size ä¸ªçš„ä»»åŠ¡é˜Ÿåˆ—ï¼Œflags å‚æ•°æ²¡æœ‰ä½¿ç”¨
+ * ´´½¨Ïß³Ì³Ø£¬ÓĞ thread_count ¸öÏß³Ì£¬ÈİÄÉ queue_size ¸öµÄÈÎÎñ¶ÓÁĞ£¬flags ²ÎÊıÃ»ÓĞÊ¹ÓÃ
  */
 threadpool_t *threadpool_create(int thread_count, int queue_size, int flags);
 
@@ -95,7 +95,7 @@ threadpool_t *threadpool_create(int thread_count, int queue_size, int flags);
  * threadpool_error_t for codes).
  */
 /**
- *  æ·»åŠ ä»»åŠ¡åˆ°çº¿ç¨‹æ± , pool ä¸ºçº¿ç¨‹æ± æŒ‡é’ˆï¼Œroutine ä¸ºå‡½æ•°æŒ‡é’ˆï¼Œ arg ä¸ºå‡½æ•°å‚æ•°ï¼Œ flags æœªä½¿ç”¨
+ *  Ìí¼ÓÈÎÎñµ½Ïß³Ì³Ø, pool ÎªÏß³Ì³ØÖ¸Õë£¬routine Îªº¯ÊıÖ¸Õë£¬ arg Îªº¯Êı²ÎÊı£¬ flags Î´Ê¹ÓÃ
  */
 int threadpool_add(threadpool_t *pool, void (*routine)(void *),
                    void *arg, int flags);
@@ -111,7 +111,7 @@ int threadpool_add(threadpool_t *pool, void (*routine)(void *),
  * processes all pending tasks before shutdown.
  */
 /**
- * é”€æ¯çº¿ç¨‹æ± ï¼Œflags å¯ä»¥ç”¨æ¥æŒ‡å®šå…³é—­çš„æ–¹å¼
+ * Ïú»ÙÏß³Ì³Ø£¬flags ¿ÉÒÔÓÃÀ´Ö¸¶¨¹Ø±ÕµÄ·½Ê½
  */
 int threadpool_destroy(threadpool_t *pool, int flags);
 

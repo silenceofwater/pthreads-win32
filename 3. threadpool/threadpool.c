@@ -33,12 +33,11 @@
 
 #include <stdlib.h>
 #include <pthread.h>
-#include <unistd.h>
 
 #include "threadpool.h"
 
 /**
- * çº¿ç¨‹æ± å…³é—­çš„æ–¹å¼
+ * Ïß³Ì³Ø¹Ø±ÕµÄ·½Ê½
  */
 typedef enum {
     immediate_shutdown = 1,
@@ -53,7 +52,7 @@ typedef enum {
  *  @var argument Argument to be passed to the function.
  */
 /**
- * çº¿ç¨‹æ± ä¸€ä¸ªä»»åŠ¡çš„å®šä¹‰
+ * Ïß³Ì³ØÒ»¸öÈÎÎñµÄ¶¨Òå
  */
 
 typedef struct {
@@ -77,18 +76,18 @@ typedef struct {
  *  @var started      Number of started threads
  */
 /**
- * çº¿ç¨‹æ± çš„ç»“æ„å®šä¹‰
- *  @var lock         ç”¨äºå†…éƒ¨å·¥ä½œçš„äº’æ–¥é”
- *  @var notify       çº¿ç¨‹é—´é€šçŸ¥çš„æ¡ä»¶å˜é‡
- *  @var threads      çº¿ç¨‹æ•°ç»„ï¼Œè¿™é‡Œç”¨æŒ‡é’ˆæ¥è¡¨ç¤ºï¼Œæ•°ç»„å = é¦–å…ƒç´ æŒ‡é’ˆ
- *  @var thread_count çº¿ç¨‹æ•°é‡
- *  @var queue        å­˜å‚¨ä»»åŠ¡çš„æ•°ç»„ï¼Œå³ä»»åŠ¡é˜Ÿåˆ—
- *  @var queue_size   ä»»åŠ¡é˜Ÿåˆ—å¤§å°
- *  @var head         ä»»åŠ¡é˜Ÿåˆ—ä¸­é¦–ä¸ªä»»åŠ¡ä½ç½®ï¼ˆæ³¨ï¼šä»»åŠ¡é˜Ÿåˆ—ä¸­æ‰€æœ‰ä»»åŠ¡éƒ½æ˜¯æœªå¼€å§‹è¿è¡Œçš„ï¼‰
- *  @var tail         ä»»åŠ¡é˜Ÿåˆ—ä¸­æœ€åä¸€ä¸ªä»»åŠ¡çš„ä¸‹ä¸€ä¸ªä½ç½®ï¼ˆæ³¨ï¼šé˜Ÿåˆ—ä»¥æ•°ç»„å­˜å‚¨ï¼Œhead å’Œ tail æŒ‡ç¤ºé˜Ÿåˆ—ä½ç½®ï¼‰
- *  @var count        ä»»åŠ¡é˜Ÿåˆ—é‡Œçš„ä»»åŠ¡æ•°é‡ï¼Œå³ç­‰å¾…è¿è¡Œçš„ä»»åŠ¡æ•°
- *  @var shutdown     è¡¨ç¤ºçº¿ç¨‹æ± æ˜¯å¦å…³é—­
- *  @var started      å¼€å§‹çš„çº¿ç¨‹æ•°
+ * Ïß³Ì³ØµÄ½á¹¹¶¨Òå
+ *  @var lock         ÓÃÓÚÄÚ²¿¹¤×÷µÄ»¥³âËø
+ *  @var notify       Ïß³Ì¼äÍ¨ÖªµÄÌõ¼ş±äÁ¿
+ *  @var threads      Ïß³ÌÊı×é£¬ÕâÀïÓÃÖ¸ÕëÀ´±íÊ¾£¬Êı×éÃû = Ê×ÔªËØÖ¸Õë
+ *  @var thread_count Ïß³ÌÊıÁ¿
+ *  @var queue        ´æ´¢ÈÎÎñµÄÊı×é£¬¼´ÈÎÎñ¶ÓÁĞ
+ *  @var queue_size   ÈÎÎñ¶ÓÁĞ´óĞ¡
+ *  @var head         ÈÎÎñ¶ÓÁĞÖĞÊ×¸öÈÎÎñÎ»ÖÃ£¨×¢£ºÈÎÎñ¶ÓÁĞÖĞËùÓĞÈÎÎñ¶¼ÊÇÎ´¿ªÊ¼ÔËĞĞµÄ£©
+ *  @var tail         ÈÎÎñ¶ÓÁĞÖĞ×îºóÒ»¸öÈÎÎñµÄÏÂÒ»¸öÎ»ÖÃ£¨×¢£º¶ÓÁĞÒÔÊı×é´æ´¢£¬head ºÍ tail Ö¸Ê¾¶ÓÁĞÎ»ÖÃ£©
+ *  @var count        ÈÎÎñ¶ÓÁĞÀïµÄÈÎÎñÊıÁ¿£¬¼´µÈ´ıÔËĞĞµÄÈÎÎñÊı
+ *  @var shutdown     ±íÊ¾Ïß³Ì³ØÊÇ·ñ¹Ø±Õ
+ *  @var started      ¿ªÊ¼µÄÏß³ÌÊı
  */
 struct threadpool_t {
   pthread_mutex_t lock;
@@ -110,13 +109,13 @@ struct threadpool_t {
  * @param threadpool the pool which own the thread
  */
 /**
- * çº¿ç¨‹æ± é‡Œæ¯ä¸ªçº¿ç¨‹åœ¨è·‘çš„å‡½æ•°
- * å£°æ˜ static åº”è¯¥åªä¸ºäº†ä½¿å‡½æ•°åªåœ¨æœ¬æ–‡ä»¶å†…æœ‰æ•ˆ
+ * Ïß³Ì³ØÀïÃ¿¸öÏß³ÌÔÚÅÜµÄº¯Êı
+ * ÉùÃ÷ static Ó¦¸ÃÖ»ÎªÁËÊ¹º¯ÊıÖ»ÔÚ±¾ÎÄ¼şÄÚÓĞĞ§
  */
 static void *threadpool_thread(void *threadpool);
 
 /**
- * é‡Šæ”¾çº¿ç¨‹æ± æ‰€ç”³è¯·çš„å†…å­˜èµ„æº
+ * ÊÍ·ÅÏß³Ì³ØËùÉêÇëµÄÄÚ´æ×ÊÔ´
  */
 int threadpool_free(threadpool_t *pool);
 
@@ -130,7 +129,7 @@ threadpool_t *threadpool_create(int thread_count, int queue_size, int flags)
         return NULL;
     }
 
-    /* ç”³è¯·å†…å­˜åˆ›å»ºå†…å­˜æ± å¯¹è±¡ */
+    /* ÉêÇëÄÚ´æ´´½¨ÄÚ´æ³Ø¶ÔÏó */
     if((pool = (threadpool_t *)malloc(sizeof(threadpool_t))) == NULL) {
         goto err;
     }
@@ -142,13 +141,13 @@ threadpool_t *threadpool_create(int thread_count, int queue_size, int flags)
     pool->shutdown = pool->started = 0;
 
     /* Allocate thread and task queue */
-    /* ç”³è¯·çº¿ç¨‹æ•°ç»„å’Œä»»åŠ¡é˜Ÿåˆ—æ‰€éœ€çš„å†…å­˜ */
+    /* ÉêÇëÏß³ÌÊı×éºÍÈÎÎñ¶ÓÁĞËùĞèµÄÄÚ´æ */
     pool->threads = (pthread_t *)malloc(sizeof(pthread_t) * thread_count);
     pool->queue = (threadpool_task_t *)malloc
         (sizeof(threadpool_task_t) * queue_size);
 
     /* Initialize mutex and conditional variable first */
-    /* åˆå§‹åŒ–äº’æ–¥é”å’Œæ¡ä»¶å˜é‡ */
+    /* ³õÊ¼»¯»¥³âËøºÍÌõ¼ş±äÁ¿ */
     if((pthread_mutex_init(&(pool->lock), NULL) != 0) ||
        (pthread_cond_init(&(pool->notify), NULL) != 0) ||
        (pool->threads == NULL) ||
@@ -157,7 +156,7 @@ threadpool_t *threadpool_create(int thread_count, int queue_size, int flags)
     }
 
     /* Start worker threads */
-    /* åˆ›å»ºæŒ‡å®šæ•°é‡çš„çº¿ç¨‹å¼€å§‹è¿è¡Œ */
+    /* ´´½¨Ö¸¶¨ÊıÁ¿µÄÏß³Ì¿ªÊ¼ÔËĞĞ */
     for(i = 0; i < thread_count; i++) {
         if(pthread_create(&(pool->threads[i]), NULL,
                           threadpool_thread, (void*)pool) != 0) {
@@ -188,54 +187,54 @@ int threadpool_add(threadpool_t *pool, void (*function)(void *),
         return threadpool_invalid;
     }
 
-    /* å¿…é¡»å…ˆå–å¾—äº’æ–¥é”æ‰€æœ‰æƒ */
+    /* ±ØĞëÏÈÈ¡µÃ»¥³âËøËùÓĞÈ¨ */
     if(pthread_mutex_lock(&(pool->lock)) != 0) {
         return threadpool_lock_failure;
     }
 
-    /* è®¡ç®—ä¸‹ä¸€ä¸ªå¯ä»¥å­˜å‚¨ task çš„ä½ç½® */
+    /* ¼ÆËãÏÂÒ»¸ö¿ÉÒÔ´æ´¢ task µÄÎ»ÖÃ */
 	next = (pool->tail + 1) % pool->queue_size;
 
     do {
         /* Are we full ? */
-        /* æ£€æŸ¥æ˜¯å¦ä»»åŠ¡é˜Ÿåˆ—æ»¡ */
+        /* ¼ì²éÊÇ·ñÈÎÎñ¶ÓÁĞÂú */
         if(pool->count == pool->queue_size) {
             err = threadpool_queue_full;
             break;
         }
 
         /* Are we shutting down ? */
-        /* æ£€æŸ¥å½“å‰çº¿ç¨‹æ± çŠ¶æ€æ˜¯å¦å…³é—­ */
+        /* ¼ì²éµ±Ç°Ïß³Ì³Ø×´Ì¬ÊÇ·ñ¹Ø±Õ */
         if(pool->shutdown) {
             err = threadpool_shutdown;
             break;
         }
 
         /* Add task to queue */
-        /* åœ¨ tail çš„ä½ç½®æ”¾ç½®å‡½æ•°æŒ‡é’ˆå’Œå‚æ•°ï¼Œæ·»åŠ åˆ°ä»»åŠ¡é˜Ÿåˆ— */
+        /* ÔÚ tail µÄÎ»ÖÃ·ÅÖÃº¯ÊıÖ¸ÕëºÍ²ÎÊı£¬Ìí¼Óµ½ÈÎÎñ¶ÓÁĞ */
         pool->queue[pool->tail].function = function;
         pool->queue[pool->tail].argument = argument;
-        /* æ›´æ–° tail å’Œ count */
+        /* ¸üĞÂ tail ºÍ count */
         pool->tail = next;
         pool->count += 1;
 
         /* pthread_cond_broadcast */
         /*
-         * å‘å‡º signal,è¡¨ç¤ºæœ‰ task è¢«æ·»åŠ è¿›æ¥äº†
-         * å¦‚æœç”±å› ä¸ºä»»åŠ¡é˜Ÿåˆ—ç©ºé˜»å¡çš„çº¿ç¨‹ï¼Œæ­¤æ—¶ä¼šæœ‰ä¸€ä¸ªè¢«å”¤é†’
-         * å¦‚æœæ²¡æœ‰åˆ™ä»€ä¹ˆéƒ½ä¸åš
+         * ·¢³ö signal,±íÊ¾ÓĞ task ±»Ìí¼Ó½øÀ´ÁË
+         * Èç¹ûÓÉÒòÎªÈÎÎñ¶ÓÁĞ¿Õ×èÈûµÄÏß³Ì£¬´ËÊ±»áÓĞÒ»¸ö±»»½ĞÑ
+         * Èç¹ûÃ»ÓĞÔòÊ²Ã´¶¼²»×ö
          */
         if(pthread_cond_signal(&(pool->notify)) != 0) {
             err = threadpool_lock_failure;
             break;
         }
         /*
-         * è¿™é‡Œç”¨çš„æ˜¯ do { ... } while(0) ç»“æ„
-         * ä¿è¯è¿‡ç¨‹æœ€å¤šè¢«æ‰§è¡Œä¸€æ¬¡ï¼Œä½†åœ¨ä¸­é—´æ–¹ä¾¿å› ä¸ºå¼‚å¸¸è€Œè·³å‡ºæ‰§è¡Œå—
+         * ÕâÀïÓÃµÄÊÇ do { ... } while(0) ½á¹¹
+         * ±£Ö¤¹ı³Ì×î¶à±»Ö´ĞĞÒ»´Î£¬µ«ÔÚÖĞ¼ä·½±ãÒòÎªÒì³£¶øÌø³öÖ´ĞĞ¿é
          */
     } while(0);
 
-    /* é‡Šæ”¾äº’æ–¥é”èµ„æº */
+    /* ÊÍ·Å»¥³âËø×ÊÔ´ */
     if(pthread_mutex_unlock(&pool->lock) != 0) {
         err = threadpool_lock_failure;
     }
@@ -251,25 +250,25 @@ int threadpool_destroy(threadpool_t *pool, int flags)
         return threadpool_invalid;
     }
 
-    /* å–å¾—äº’æ–¥é”èµ„æº */
+    /* È¡µÃ»¥³âËø×ÊÔ´ */
     if(pthread_mutex_lock(&(pool->lock)) != 0) {
         return threadpool_lock_failure;
     }
 
     do {
         /* Already shutting down */
-        /* åˆ¤æ–­æ˜¯å¦å·²åœ¨å…¶ä»–åœ°æ–¹å…³é—­ */
+        /* ÅĞ¶ÏÊÇ·ñÒÑÔÚÆäËûµØ·½¹Ø±Õ */
         if(pool->shutdown) {
             err = threadpool_shutdown;
             break;
         }
 
-        /* è·å–æŒ‡å®šçš„å…³é—­æ–¹å¼ */
+        /* »ñÈ¡Ö¸¶¨µÄ¹Ø±Õ·½Ê½ */
         pool->shutdown = (flags & threadpool_graceful) ?
             graceful_shutdown : immediate_shutdown;
 
         /* Wake up all worker threads */
-        /* å”¤é†’æ‰€æœ‰å› æ¡ä»¶å˜é‡é˜»å¡çš„çº¿ç¨‹ï¼Œå¹¶é‡Šæ”¾äº’æ–¥é” */
+        /* »½ĞÑËùÓĞÒòÌõ¼ş±äÁ¿×èÈûµÄÏß³Ì£¬²¢ÊÍ·Å»¥³âËø */
         if((pthread_cond_broadcast(&(pool->notify)) != 0) ||
            (pthread_mutex_unlock(&(pool->lock)) != 0)) {
             err = threadpool_lock_failure;
@@ -277,18 +276,18 @@ int threadpool_destroy(threadpool_t *pool, int flags)
         }
 
         /* Join all worker thread */
-        /* ç­‰å¾…æ‰€æœ‰çº¿ç¨‹ç»“æŸ */
+        /* µÈ´ıËùÓĞÏß³Ì½áÊø */
         for(i = 0; i < pool->thread_count; i++) {
             if(pthread_join(pool->threads[i], NULL) != 0) {
                 err = threadpool_thread_failure;
             }
         }
-        /* åŒæ ·æ˜¯ do{...} while(0) ç»“æ„*/
+        /* Í¬ÑùÊÇ do{...} while(0) ½á¹¹*/
     } while(0);
 
     /* Only if everything went well do we deallocate the pool */
     if(!err) {
-        /* é‡Šæ”¾å†…å­˜èµ„æº */
+        /* ÊÍ·ÅÄÚ´æ×ÊÔ´ */
         threadpool_free(pool);
     }
     return err;
@@ -301,7 +300,7 @@ int threadpool_free(threadpool_t *pool)
     }
 
     /* Did we manage to allocate ? */
-    /* é‡Šæ”¾çº¿ç¨‹ ä»»åŠ¡é˜Ÿåˆ— äº’æ–¥é” æ¡ä»¶å˜é‡ çº¿ç¨‹æ± æ‰€å å†…å­˜èµ„æº */
+    /* ÊÍ·ÅÏß³Ì ÈÎÎñ¶ÓÁĞ »¥³âËø Ìõ¼ş±äÁ¿ Ïß³Ì³ØËùÕ¼ÄÚ´æ×ÊÔ´ */
     if(pool->threads) {
         free(pool->threads);
         free(pool->queue);
@@ -325,18 +324,18 @@ static void *threadpool_thread(void *threadpool)
 
     for(;;) {
         /* Lock must be taken to wait on conditional variable */
-        /* å–å¾—äº’æ–¥é”èµ„æº */
+        /* È¡µÃ»¥³âËø×ÊÔ´ */
         pthread_mutex_lock(&(pool->lock));
 
         /* Wait on condition variable, check for spurious wakeups.
            When returning from pthread_cond_wait(), we own the lock. */
-        /* ç”¨ while æ˜¯ä¸ºäº†åœ¨å”¤é†’æ—¶é‡æ–°æ£€æŸ¥æ¡ä»¶ */
+        /* ÓÃ while ÊÇÎªÁËÔÚ»½ĞÑÊ±ÖØĞÂ¼ì²éÌõ¼ş */
         while((pool->count == 0) && (!pool->shutdown)) {
-            /* ä»»åŠ¡é˜Ÿåˆ—ä¸ºç©ºï¼Œä¸”çº¿ç¨‹æ± æ²¡æœ‰å…³é—­æ—¶é˜»å¡åœ¨è¿™é‡Œ */
+            /* ÈÎÎñ¶ÓÁĞÎª¿Õ£¬ÇÒÏß³Ì³ØÃ»ÓĞ¹Ø±ÕÊ±×èÈûÔÚÕâÀï */
             pthread_cond_wait(&(pool->notify), &(pool->lock));
         }
 
-        /* å…³é—­çš„å¤„ç† */
+        /* ¹Ø±ÕµÄ´¦Àí */
         if((pool->shutdown == immediate_shutdown) ||
            ((pool->shutdown == graceful_shutdown) &&
             (pool->count == 0))) {
@@ -344,24 +343,24 @@ static void *threadpool_thread(void *threadpool)
         }
 
         /* Grab our task */
-        /* å–å¾—ä»»åŠ¡é˜Ÿåˆ—çš„ç¬¬ä¸€ä¸ªä»»åŠ¡ */
+        /* È¡µÃÈÎÎñ¶ÓÁĞµÄµÚÒ»¸öÈÎÎñ */
         task.function = pool->queue[pool->head].function;
         task.argument = pool->queue[pool->head].argument;
-        /* æ›´æ–° head å’Œ count */
+        /* ¸üĞÂ head ºÍ count */
 		pool->head = (pool->head + 1) % pool->queue_size;
         pool->count -= 1;
 
         /* Unlock */
-        /* é‡Šæ”¾äº’æ–¥é” */
+        /* ÊÍ·Å»¥³âËø */
         pthread_mutex_unlock(&(pool->lock));
 
         /* Get to work */
-        /* å¼€å§‹è¿è¡Œä»»åŠ¡ */
+        /* ¿ªÊ¼ÔËĞĞÈÎÎñ */
         (*(task.function))(task.argument);
-        /* è¿™é‡Œä¸€ä¸ªä»»åŠ¡è¿è¡Œç»“æŸ */
+        /* ÕâÀïÒ»¸öÈÎÎñÔËĞĞ½áÊø */
     }
 
-    /* çº¿ç¨‹å°†ç»“æŸï¼Œæ›´æ–°è¿è¡Œçº¿ç¨‹æ•° */
+    /* Ïß³Ì½«½áÊø£¬¸üĞÂÔËĞĞÏß³ÌÊı */
     pool->started--;
 
     pthread_mutex_unlock(&(pool->lock));
